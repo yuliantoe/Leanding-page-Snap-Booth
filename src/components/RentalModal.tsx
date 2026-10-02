@@ -45,7 +45,7 @@ export const RentalModal: React.FC<RentalModalProps> = ({
       `- Estimasi Kertas: ${paperRolls} Roll Thermal\n\n` +
       `Apakah jadwal tersebut masih tersedia? Mohon info penawaran resmi. Terima kasih!`
     );
-    window.open(`https://wa.me/6281234567890?text=${text}`, '_blank');
+    window.open(`https://wa.me/6285159746119?text=${text}`, '_blank');
   };
 
   return (

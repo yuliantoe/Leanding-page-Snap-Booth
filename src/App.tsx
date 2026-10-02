@@ -613,7 +613,7 @@ export default function App() {
             <a href="#sewa" className="hover:text-orange-600">Sewa Alat</a>
             <a href="#review" className="hover:text-orange-600">Ulasan</a>
             <a
-              href="https://wa.me/6281234567890?text=Halo%20Snapbooth%20Studio"
+              href="https://wa.me/6285159746119?text=Halo%20Snapbooth%20Studio"
               target="_blank"
               rel="noreferrer"
               className="hover:text-orange-600 flex items-center gap-1"

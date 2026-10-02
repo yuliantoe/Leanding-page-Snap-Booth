@@ -42,7 +42,7 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
     const message = encodeURIComponent(
       `Halo Admin Snapbooth Studio! 👋\n\nSaya tertarik untuk berlangganan software Photobooth Struk:\n- Paket: ${selectedPlan.name} (${selectedPlan.duration})\n- Harga: ${selectedPlan.price}\n- Nama Usaha/Event: ${businessName || '-'}\n- No. Kontak: ${contactPhone || '-'}\n\nMohon info panduan aktivasi dan metode pembayaran. Terima kasih!`
     );
-    window.open(`https://wa.me/6281234567890?text=${message}`, '_blank');
+    window.open(`https://wa.me/6285159746119?text=${message}`, '_blank');
   };
 
   return (
