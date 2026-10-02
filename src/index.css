@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #f1f1f4;
+    --dot: #d3d3da;
+    --paper: #ffffff;
+    --ink: #1c1c22;
+    --mute: #6f6f7a;
+    --acc: #ff4d00;
+    --acc-hover: #e04400;
+    --ok: #0a8f4d;
+    --line: #c9c9d1;
+    font-family: 'Space Mono', ui-monospace, Menlo, monospace;
+    color: var(--ink);
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #15151a;
+    --dot: #2a2a32;
+    --paper: #f8f6f0;
+    --ink: #1c1c22;
+    --mute: #8e8e98;
+    --line: #bdbdc4;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px);
+    background-size: 24px 24px;
+    font-family: 'Space Mono', ui-monospace, Menlo, monospace;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .font-display {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .font-receipt {
+    font-family: 'Space Mono', ui-monospace, monospace;
+  }
+}
+
+/* Receipt paper styling with serrated bottom edge */
+.receipt-paper {
+  background: var(--paper);
+  color: #1c1c22;
+  position: relative;
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.12));
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 14px 100%;
+  mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 14px 100%;
+}
+
+.receipt-paper-clean {
+  background: #ffffff;
+  color: #111111;
+  position: relative;
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 14px 100%;
+  mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 14px 100%;
+}
+
+/* Barcode simulation pattern */
+.receipt-barcode {
+  height: 40px;
+  background: repeating-linear-gradient(
+    90deg,
+    #111 0px,
+    #111 2px,
+    transparent 2px,
+    transparent 4px,
+    #111 4px,
+    #111 5px,
+    transparent 5px,
+    transparent 8px,
+    #111 8px,
+    #111 11px,
+    transparent 11px,
+    transparent 12px,
+    #111 12px,
+    #111 15px,
+    transparent 15px,
+    transparent 17px,
+    #111 17px,
+    #111 19px,
+    transparent 19px,
+    transparent 21px
+  );
+}
+
+/* Authentic Thermal Printing Animation */
+@keyframes receiptFeed {
+  0% {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(-8px);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0);
+  }
+}
+
+.animate-receipt-feed {
+  animation: receiptFeed 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Flash animation for camera */
+@keyframes cameraFlash {
+  0% { opacity: 0.95; }
+  100% { opacity: 0; }
+}
+
+.animate-flash {
+  animation: cameraFlash 0.35s ease-out forwards;
+}
+
+/* Print Stylesheet for Real Thermal Receipt Printers (58mm / 80mm) */
+@media print {
+  body {
+    background: transparent !important;
+    background-image: none !important;
+    color: #000000 !important;
+  }
+
+  /* Hide everything except the printable receipt */
+  body * {
+    visibility: hidden;
+  }
+
+  #printable-receipt-area,
+  #printable-receipt-area * {
+    visibility: visible;
+  }
+
+  #printable-receipt-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: 80mm;
+    margin: 0;
+    padding: 2mm 3mm;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    filter: none !important;
+    -webkit-mask: none !important;
+    mask: none !important;
+  }
+
+  @page {
+    margin: 0;
+    size: auto;
+  }
+}
